@@ -298,4 +298,3 @@ unsigned long long read_ll_num(unsigned char* arr, unsigned char from_msb, int n
 	}
 	return output;
 }
- 
