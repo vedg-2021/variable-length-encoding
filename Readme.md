@@ -1,14 +1,14 @@
-# Variable Length Encoding System
+# 🗜️ Variable Length Encoding System
 
 A custom variable-length encoding implementation for efficiently storing large integers, particularly designed for file system applications where file sizes need to be stored without fixed limitations.
 
-## Overview
+## 📖 Overview
 
 In file systems, we ideally should not put any arbitrary limit on file sizes. The only limitation should be that the file size is smaller than the disk capacity. When building a disk/file system, we need an efficient way to store file size metadata while being able to distinguish where the size information ends and the actual file content begins.
 
 This project implements a hierarchical variable-length encoding algorithm that can compress 64-bit integers into a more compact binary representation.
 
-## How It Works
+## ⚙️ How It Works
 
 The encoding algorithm uses a self-describing format that stores:
 1. The original number in its minimal bit representation
@@ -18,7 +18,7 @@ The encoding algorithm uses a self-describing format that stores:
 
 This creates a variable-length encoding that is space-efficient for both small and large numbers.
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 ├── test.c                    # Main test driver
@@ -30,7 +30,7 @@ This creates a variable-length encoding that is space-efficient for both small a
 └── Readme.md               # This file
 ```
 
-## Building and Running
+## 🔨 Building and Running
 
 ### Prerequisites
 - GCC compiler
@@ -46,7 +46,7 @@ gcc test.c bit_functions/bit_functions.c run_this.c -lm -o test.out
 ./test.out
 ```
 
-## API Reference
+## 📚 API Reference
 
 ### Core Functions
 
@@ -71,7 +71,7 @@ Located in `bit_functions/`:
 - `read_ll_num()` - Read large numbers from bit arrays
 - `store_seq()` - Store sequences with continuation flags
 
-## Example Usage
+## 💡 Example Usage
 
 The test program demonstrates encoding and decoding of large integers:
 
@@ -82,28 +82,28 @@ char *out = NULL;
 decode(encodeSeq(in, out));  // Encode then decode
 ```
 
-## Use Cases
+## 🎯 Use Cases
 
 - **File Systems**: Storing file size metadata without artificial limitations
 - **Database Systems**: Variable-length integer storage
 - **Network Protocols**: Efficient integer serialization
 - **Data Compression**: Space-efficient number representation
 
-## Algorithm Benefits
+## ✨ Algorithm Benefits
 
 1. **Space Efficient**: Small numbers use fewer bits than fixed-width encoding
 2. **Scalable**: Supports very large integers (up to 64-bit)
 3. **Self-Describing**: No external metadata needed to decode
 4. **Boundary Detection**: Clear separation between metadata and data
 
-## Technical Details
+## 🔧 Technical Details
 
 The encoding uses a continuation bit system similar to Protocol Buffers' varint but with custom optimizations for file system use cases. The algorithm recursively encodes the bit-length requirements, creating a hierarchical structure that minimizes space usage while maintaining fast decode performance.
 
-## Contributing
+## 🤝 Contributing
 
 This project is part of academic coursework in Data Structures. Feel free to explore the code and suggest improvements.
 
-## License
+## 📄 License
 
 Educational use - part of SYMCA coursework project.
